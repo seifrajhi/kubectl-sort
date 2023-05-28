@@ -5,7 +5,7 @@ metadata:
 spec:  
   platforms:  
   - uri: https://github.com/seifrajhi/kubectl-sort/archive/v1.0.0.zip   
-    sha256: 6e4c52fe8d600515bd617e076416937e6cf9f28b847da2aa16ad332d21eea951    
+    sha256: 96914745fc3369bb8f7830a3009d3fe1535521e4602a069560a1acdcec9038cc    
     bin: sort.py    
     files:    
     - from: "/kubectl-sort-*/sort.py"      

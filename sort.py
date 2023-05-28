@@ -7,16 +7,13 @@ import subprocess
 # Project: https://github.com/
 # version: 1.0.0
 
-cmd = sys.argv[4] if len(sys.argv) >= 5 else "help"
-option3 = sys.argv[5] if len(sys.argv) >= 6 else None
+cmd = sys.argv[2] if len(sys.argv) >= 3 else "help"
+option3 = sys.argv[3] if len(sys.argv) >= 4 else None
 option1 = ""
-
-
 
 def pod():
     global option1
     global option2
-
 
     arg = {
         "name": ".metadata.name",
@@ -29,6 +26,7 @@ def pod():
     
     option1 = "pod"
     option2 = arg.get(cmd)
+
 def deployment():
     global option1
     global option2
@@ -79,8 +77,8 @@ def help():
                         option3: namespace-name or all
     """)
     sys.exit()
-if len(sys.argv) >= 3 and sys.argv[1] == "kubectl" and sys.argv[2] == "sort":
-    arg = sys.argv[3]
+if len(sys.argv) >= 2:
+    arg = sys.argv[1]
     if arg in ["pod", "pods", "po"]:
         pod()
     elif arg in ["deploy", "deployments", "deployment"]:
@@ -91,18 +89,18 @@ if len(sys.argv) >= 3 and sys.argv[1] == "kubectl" and sys.argv[2] == "sort":
         help()
 
 
-    if len(sys.argv) >= 4:
-        if len(sys.argv) == 5:
+    if len(sys.argv) >= 3:
+        if len(sys.argv) == 3:
             option3 = "default" 
-        elif len(sys.argv) == 6 and sys.argv[5] == "all":
+        elif len(sys.argv) == 4 and sys.argv[3] == "all":
             option3 = "--all-namespaces"
-        elif len(sys.argv) == 6:
-            option3 = sys.argv[5]
+        elif len(sys.argv) == 4:
+            option3 = sys.argv[3]
         else:
             help()
 
         if option3:
-            if sys.argv[4] != "all":
+            if option3 != "--all-namespaces":
                 command = f"kubectl get {option1} --sort-by='{option2}' -n {option3}"
             else:
                 command = f"kubectl get {option1} --sort-by='{option2}'  {option3} "
