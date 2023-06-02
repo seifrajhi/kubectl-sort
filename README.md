@@ -14,7 +14,7 @@ It works for pods, deployments and services.
 
 
 ## 2 Step Installation:
-Linux:
+### Linux:
 Since  kubectl-sort is written in python3,  kubectl-sort is expected to run on any OS environment that has kubectl and krew installed.
 
 1) Download the kubectl-sort scripts:<br>
@@ -23,6 +23,14 @@ Since  kubectl-sort is written in python3,  kubectl-sort is expected to run on a
 2) Make the script executable:<br>
    `chmod +x /usr/local/bin/kubectl-sort`
 
+### Homebrew (macOS)
+
+If you use [Homebrew](https://brew.sh/) you can install like this:
+
+```sh
+brew tap seifrajhi/kubectl-sort 
+brew install kubectl-sort
+```
    
 ## Usage:
 ```
